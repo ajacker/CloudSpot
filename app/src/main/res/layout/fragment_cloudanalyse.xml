@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.qmuiteam.qmui.layout.QMUILinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/qmui_topbar_height"
+        android:background="?attr/qmui_config_color_background"
+        android:orientation="vertical">
+
+        <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+            android:id="@+id/cloudImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:src="@drawable/ic_launcher_background">
+
+        </com.qmuiteam.qmui.widget.QMUIRadiusImageView>
+
+        <com.qmuiteam.qmui.layout.QMUILinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/type_text"
+                style="@style/QDCommonTitle"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="云朵类型"
+                android:textSize="30sp" />
+
+            <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                android:id="@+id/type_imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:src="@mipmap/ic_launcher"
+                app:qmui_border_color="@color/qmui_config_color_gray_9"
+                app:qmui_border_width="6dp"
+                app:qmui_is_circle="true"></com.qmuiteam.qmui.widget.QMUIRadiusImageView>
+
+            <com.qmuiteam.qmui.layout.QMUILinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:paddingTop="35dp"
+                android:paddingRight="25dp"
+                android:paddingBottom="35dp">
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/infoBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="6dp"
+                    android:text="查看介绍"
+                    android:textColor="@color/qmui_config_color_white"
+                    android:textSize="22sp"
+                    app:qmui_backgroundColor="#66ccff"
+                    app:qmui_borderColor="@color/qmui_config_color_50_blue"
+                    app:qmui_borderWidth="1px"></com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton>
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/shareBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="6dp"
+                    android:text="分享美图"
+                    android:textColor="@color/qmui_config_color_white"
+                    android:textSize="22sp"
+                    app:qmui_backgroundColor="#66ccff"
+                    app:qmui_borderColor="@color/qmui_config_color_50_blue"
+                    app:qmui_borderWidth="1px"></com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton>
+            </com.qmuiteam.qmui.layout.QMUILinearLayout>
+        </com.qmuiteam.qmui.layout.QMUILinearLayout>
+    </com.qmuiteam.qmui.layout.QMUILinearLayout>
+
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true" />
+
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>

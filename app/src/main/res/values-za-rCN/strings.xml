@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CloudSpot</string>
+    <string name="tab_findcloud_title">寻云</string>
+    <string name="tab_history_title">过往</string>
+</resources>

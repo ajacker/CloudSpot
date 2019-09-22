@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/qmui_config_color_white"
+    android:orientation="horizontal"
+    android:padding="6dp">
+
+    <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+        android:id="@+id/cloudRadiusImage"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="4"
+        android:src="@drawable/ic_launcher_background"
+        app:qmui_border_color="?attr/qmui_config_color_gray_6"
+        app:qmui_border_width="1px"
+        app:qmui_corner_radius="20dp">
+
+    </com.qmuiteam.qmui.widget.QMUIRadiusImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="云朵类型"
+            android:textSize="16sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/save_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="保存时间"
+            android:textSize="14sp">
+
+        </TextView>
+    </LinearLayout>
+</LinearLayout>
