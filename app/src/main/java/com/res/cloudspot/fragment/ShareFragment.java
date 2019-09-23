@@ -32,8 +32,10 @@ public class ShareFragment extends BaseFragment {
 
     private ImageRecyclerAdapter adapter;
     private TypeViewPagerAdapter pagerAdapter;
+    private int lastSelected = 0;
 
     private CloudData cloudData;
+
 
 
     @Override
@@ -73,21 +75,32 @@ public class ShareFragment extends BaseFragment {
         viewPager.setAdapter(pagerAdapter);
         viewPager.setSwipeable(false);
 
+        viewPager.post(() -> setSelectedOutline(0, true));
 
-        //设置recycleview的选中事件
+        //设置recycleView的选中事件
         adapter.setOnItemClickListener((position) -> {
             //设置选中边框
-            for (int i = 0; i < mStyleRecyclerView.getChildCount(); i++) {
-                View child = mStyleRecyclerView.getChildAt(i);
-                ImageRecyclerAdapter.ViewHolder holder = (ImageRecyclerAdapter.ViewHolder) mStyleRecyclerView.getChildViewHolder(child);
-                if (i == position) {
-                    holder.getImageView().setBorderWidth(4);
-                } else {
-                    holder.getImageView().setBorderWidth(0);
-                }
+            if (position != lastSelected) {
+                //取消之前选中的边框
+                setSelectedOutline(lastSelected, false);
+                //添加选中边框
+                setSelectedOutline(position, true);
+                lastSelected = position;
             }
             viewPager.setCurrentItem(position, true);
         });
+    }
+
+    /**
+     * 设置item的选中边框
+     *
+     * @param index 序号
+     * @param flag  是否选中
+     */
+    private void setSelectedOutline(int index, boolean flag) {
+        View curChild = mStyleRecyclerView.getChildAt(index);
+        ImageRecyclerAdapter.ViewHolder cur = (ImageRecyclerAdapter.ViewHolder) mStyleRecyclerView.getChildViewHolder(curChild);
+        cur.getImageView().setBorderWidth(flag ? 4 : 0);
     }
 
     private void initTopBar() {
