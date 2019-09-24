@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.qmuiteam.qmui.widget.QMUIRadiusImageView;
 import com.res.cloudspot.R;
 
@@ -47,7 +48,7 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imageView.setImageBitmap(mData.get(position));
+        Glide.with(mContext).load(mData.get(position)).into(holder.imageView);
         if (onItemClickListener != null) {
             holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(position));
         }

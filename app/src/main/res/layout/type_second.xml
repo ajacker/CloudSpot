@@ -5,37 +5,51 @@
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/pic_imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:adjustViewBounds="true"
-        android:src="@mipmap/ic_launcher"></ImageView>
+        android:src="@mipmap/ic_launcher" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.qmuiteam.qmui.widget.QMUIVerticalTextView
+        <LinearLayout
+            android:id="@+id/poem_layout"
+            android:layout_marginTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:maxLines="5"
-            android:text="这里是一首美丽的诗词"
-            android:textSize="16sp">
+            android:gravity="end"
+            android:orientation="horizontal"></LinearLayout>
 
-        </com.qmuiteam.qmui.widget.QMUIVerticalTextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <ImageView
+        </TextView>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_weight="3"
-            android:adjustViewBounds="true"
-            android:padding="80dp"
-            android:src="@mipmap/icon">
+            android:orientation="horizontal">
 
-        </ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:adjustViewBounds="true"
+                android:scaleX="0.4"
+                android:scaleY="0.4"
+                android:src="@mipmap/icon">
+
+            </ImageView>
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

@@ -16,6 +16,7 @@ import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.res.cloudspot.base.BaseFragmentActivity;
 import com.res.cloudspot.fragment.AnalyseFragment;
 import com.res.cloudspot.fragment.CloudFragment;
+import com.res.cloudspot.fragment.ImageViewerFragment;
 import com.res.cloudspot.fragment.ShareFragment;
 import com.res.cloudspot.fragment.home.HomeFragment;
 
@@ -27,7 +28,8 @@ import com.res.cloudspot.fragment.home.HomeFragment;
                 HomeFragment.class,
                 CloudFragment.class,
                 AnalyseFragment.class,
-                ShareFragment.class
+                ShareFragment.class,
+                ImageViewerFragment.class
         })
 @DefaultFirstFragment(HomeFragment.class)
 @LatestVisitRecord

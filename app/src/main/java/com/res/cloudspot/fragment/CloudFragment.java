@@ -132,8 +132,7 @@ public class CloudFragment extends BaseFragment {
      * 保存云朵图片和介绍
      */
     private void saveCloud() {
-        Bitmap saveBitmap = CameraUtil.compressImage(cloudData.getBitmap());
-        CloudData data = new CloudData(saveBitmap, cloudData.type);
+        CloudData data = new CloudData(cloudData.getBitmap(), cloudData.type);
         data.comment = cloudData.comment;
         HistoryTabFragment.dataList.add(data);
     }

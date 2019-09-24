@@ -44,7 +44,7 @@
                 android:src="@mipmap/ic_launcher"
                 app:qmui_border_color="@color/qmui_config_color_gray_9"
                 app:qmui_border_width="6dp"
-                app:qmui_is_circle="true"></com.qmuiteam.qmui.widget.QMUIRadiusImageView>
+                app:qmui_is_circle="true" />
 
             <com.qmuiteam.qmui.layout.QMUILinearLayout
                 android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                     android:textSize="22sp"
                     app:qmui_backgroundColor="#66ccff"
                     app:qmui_borderColor="@color/qmui_config_color_50_blue"
-                    app:qmui_borderWidth="1px"></com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton>
+                    app:qmui_borderWidth="1px" />
 
                 <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
                     android:id="@+id/shareBtn"
@@ -88,7 +88,7 @@
                     android:textSize="22sp"
                     app:qmui_backgroundColor="#66ccff"
                     app:qmui_borderColor="@color/qmui_config_color_50_blue"
-                    app:qmui_borderWidth="1px"></com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton>
+                    app:qmui_borderWidth="1px" />
             </com.qmuiteam.qmui.layout.QMUILinearLayout>
         </com.qmuiteam.qmui.layout.QMUILinearLayout>
     </com.qmuiteam.qmui.layout.QMUILinearLayout>

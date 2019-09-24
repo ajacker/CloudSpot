@@ -6,22 +6,34 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/qmui_topbar_height"
         android:background="?attr/qmui_config_color_background">
 
-        <com.qmuiteam.qmui.widget.QMUIViewPager
-            android:id="@+id/viewPager"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></com.qmuiteam.qmui.widget.QMUIViewPager>
+            android:layout_height="match_parent"
+            android:layout_above="@id/style_recyclerView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.res.cloudspot.util.ViewPagerForScrollView
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </ScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/style_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
             android:background="@color/qmui_config_color_gray_6"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -29,7 +41,7 @@
             tools:listitem="@layout/styleitem_layout">
 
         </androidx.recyclerview.widget.RecyclerView>
-    </FrameLayout>
+    </RelativeLayout>
 
     <com.qmuiteam.qmui.widget.QMUITopBarLayout
         android:id="@+id/topbar"

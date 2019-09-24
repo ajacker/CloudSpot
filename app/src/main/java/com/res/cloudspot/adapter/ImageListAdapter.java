@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.qmuiteam.qmui.widget.QMUIRadiusImageView;
 import com.res.cloudspot.R;
 import com.res.cloudspot.util.CloudData;
@@ -78,7 +79,7 @@ public class ImageListAdapter extends BaseAdapter {
         holder.titleText.setText(dataList.get(position).type);
         holder.timeText.setText(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(dataList.get(position).date));
         if (dataList.get(position).getBitmap() != null) {
-            holder.imageView.setImageBitmap(dataList.get(position).getBitmap());
+            Glide.with(mContext).load(dataList.get(position).getBitmap()).into(holder.imageView);
         }
         return convertView;
     }

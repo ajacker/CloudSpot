@@ -9,12 +9,12 @@ import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
-import com.qmuiteam.qmui.widget.QMUIViewPager;
 import com.res.cloudspot.R;
 import com.res.cloudspot.adapter.ImageRecyclerAdapter;
 import com.res.cloudspot.adapter.TypeViewPagerAdapter;
 import com.res.cloudspot.base.BaseFragment;
 import com.res.cloudspot.util.CloudData;
+import com.res.cloudspot.util.ViewPagerForScrollView;
 
 import java.util.ArrayList;
 
@@ -27,7 +27,7 @@ public class ShareFragment extends BaseFragment {
     @BindView(R.id.style_recyclerView)
     RecyclerView mStyleRecyclerView;
     @BindView(R.id.viewPager)
-    QMUIViewPager viewPager;
+    ViewPagerForScrollView viewPager;
 
 
     private ImageRecyclerAdapter adapter;
@@ -71,7 +71,7 @@ public class ShareFragment extends BaseFragment {
         assert data != null;
         cloudData = (CloudData) data.getSerializable("data");
 
-        pagerAdapter = new TypeViewPagerAdapter(requireContext());
+        pagerAdapter = new TypeViewPagerAdapter(requireContext(), cloudData.getBitmap());
         viewPager.setAdapter(pagerAdapter);
         viewPager.setSwipeable(false);
 
