@@ -1,15 +1,17 @@
 package com.res.cloudspot.fragment;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.qmuiteam.qmui.util.QMUIDrawableHelper;
+import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
@@ -17,12 +19,8 @@ import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.res.cloudspot.R;
 import com.res.cloudspot.base.BaseFragment;
 import com.res.cloudspot.fragment.home.HistoryTabFragment;
-import com.res.cloudspot.util.CameraUtil;
+import com.res.cloudspot.util.BitmapUtil;
 import com.res.cloudspot.util.CloudData;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,10 +59,13 @@ public class CloudFragment extends BaseFragment {
 
         mTopBar.setTitle("云朵介绍");
 
-        mTopBar.addRightImageButton(R.mipmap.icon_topbar_overflow, R.id.topbar_right_save_button)
-                .setOnClickListener(v -> {
-                    showBottomSheet();
-                });
+//        mTopBar.addRightImageButton(R.mipmap.icon_topbar_overflow, R.id.topbar_right_save_button)
+//                .setOnClickListener(v -> {
+//                    showBottomSheet();
+//                });
+        Button btnShare = mTopBar.addRightTextButton("分享", QMUIViewHelper.generateViewId());
+        btnShare.setTextColor(getResources().getColor(R.color.qmui_config_color_white));
+        btnShare.setOnClickListener(v -> shareAsPic());
     }
 
     /**
@@ -108,25 +109,12 @@ public class CloudFragment extends BaseFragment {
         displayImageView.setOnClickListener(v -> dialog.dismiss());
         cancelButton.setOnClickListener(v -> dialog.dismiss());
 
-        shareButton.setOnClickListener(v -> share(createFromViewBitmap));
+        shareButton.setOnClickListener(v -> BitmapUtil.share(requireContext(), createFromViewBitmap));
 
         dialog.show();
     }
 
-    private void share(Bitmap bitmap) {
-        File file = CameraUtil.createImageFile(Locale.getDefault(), requireContext(), "share");
-        try (FileOutputStream out = new FileOutputStream(file)) {
-            bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Intent shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
-        //shareIntent.setPackage("com.tencent.mobileqq");
-        shareIntent.putExtra(Intent.EXTRA_STREAM, CameraUtil.getUriFromFile(requireContext(), file));
-        shareIntent.setType("image/jpeg");
-        requireContext().startActivity(Intent.createChooser(shareIntent, "分享图片"));
-    }
+
 
     /**
      * 保存云朵图片和介绍
@@ -142,7 +130,8 @@ public class CloudFragment extends BaseFragment {
         assert data != null;
         cloudData = (CloudData) data.getSerializable("data");
         assert cloudData != null;
-        mCloudImageView.setImageBitmap(cloudData.getBitmap());
+
+        Glide.with(mCloudImageView).load(cloudData.getBitmap()).into(mCloudImageView);
         mTitleTextView.setText(cloudData.type);
         mCommentTextView.setText(cloudData.comment);
     }

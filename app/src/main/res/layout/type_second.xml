@@ -2,14 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <ImageView
+    <com.qmuiteam.qmui.widget.QMUIRadiusImageView
         android:id="@+id/pic_imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:adjustViewBounds="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        app:qmui_is_circle="true"
         android:src="@mipmap/ic_launcher" />
 
     <LinearLayout
@@ -24,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:gravity="end"
-            android:orientation="horizontal"></LinearLayout>
+            android:orientation="horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,15 +40,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:gravity="end"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:adjustViewBounds="true"
-                android:scaleX="0.4"
-                android:scaleY="0.4"
                 android:src="@mipmap/icon">
 
             </ImageView>

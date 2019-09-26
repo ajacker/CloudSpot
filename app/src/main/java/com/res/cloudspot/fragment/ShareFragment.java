@@ -1,18 +1,25 @@
 package com.res.cloudspot.fragment;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.qmuiteam.qmui.util.QMUIDrawableHelper;
+import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
+import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.res.cloudspot.R;
 import com.res.cloudspot.adapter.ImageRecyclerAdapter;
 import com.res.cloudspot.adapter.TypeViewPagerAdapter;
 import com.res.cloudspot.base.BaseFragment;
+import com.res.cloudspot.util.BitmapUtil;
 import com.res.cloudspot.util.CloudData;
 import com.res.cloudspot.util.ViewPagerForScrollView;
 
@@ -28,6 +35,8 @@ public class ShareFragment extends BaseFragment {
     RecyclerView mStyleRecyclerView;
     @BindView(R.id.viewPager)
     ViewPagerForScrollView viewPager;
+    @BindView(R.id.sharePicView)
+    ScrollView sharePicView;
 
 
     private ImageRecyclerAdapter adapter;
@@ -35,7 +44,6 @@ public class ShareFragment extends BaseFragment {
     private int lastSelected = 0;
 
     private CloudData cloudData;
-
 
 
     @Override
@@ -50,18 +58,13 @@ public class ShareFragment extends BaseFragment {
 
 
     private void initVars() {
-        ArrayList<Bitmap> mData = new ArrayList<>();
-        Bitmap map = Bitmap.createBitmap(500, 500,
-                Bitmap.Config.ARGB_8888);
-        map.eraseColor(Color.parseColor("#FF0000"));
-        mData.add(map);
-        mData.add(map);
-        mData.add(map);
-        mData.add(map);
-        mData.add(map);
-        mData.add(map);
-        mData.add(map);
-        mData.add(map);
+        ArrayList<Integer> mData = new ArrayList<>();
+//        Bitmap map1 = BitmapFactory.decodeResource(getResources(),R.mipmap.type1);
+//        Bitmap map2 = BitmapFactory.decodeResource(getResources(),R.mipmap.type1);
+//        Bitmap map3 = BitmapFactory.decodeResource(getResources(),R.mipmap.type1);
+        mData.add(R.mipmap.type1);
+        mData.add(R.mipmap.type2);
+        mData.add(R.mipmap.type3);
         adapter = new ImageRecyclerAdapter(requireContext(), mData);
         mStyleRecyclerView.setAdapter(adapter);
     }
@@ -71,7 +74,7 @@ public class ShareFragment extends BaseFragment {
         assert data != null;
         cloudData = (CloudData) data.getSerializable("data");
 
-        pagerAdapter = new TypeViewPagerAdapter(requireContext(), cloudData.getBitmap());
+        pagerAdapter = new TypeViewPagerAdapter(requireContext(), cloudData.getBitmap(), cloudData.type);
         viewPager.setAdapter(pagerAdapter);
         viewPager.setSwipeable(false);
 
@@ -106,6 +109,33 @@ public class ShareFragment extends BaseFragment {
     private void initTopBar() {
         mTopbar.addLeftBackImageButton().setOnClickListener(v -> popBackStack());
         mTopbar.setTitle("分享美图");
+
+        Button btnShare = mTopbar.addRightTextButton("分享", QMUIViewHelper.generateViewId());
+        btnShare.setTextColor(getResources().getColor(R.color.qmui_config_color_white));
+        btnShare.setOnClickListener(v -> shareAsPic());
+    }
+
+    /**
+     * 生成图片分享
+     */
+    private void shareAsPic() {
+        QMUIDialog.CustomDialogBuilder dialogBuilder = new QMUIDialog.CustomDialogBuilder(getContext());
+        dialogBuilder.setLayout(R.layout.sharepic_layout);
+        final QMUIDialog dialog = dialogBuilder.setTitle("分享以下图片").create();
+
+        ImageView displayImageView = dialog.findViewById(R.id.createFromViewDisplay);
+        QMUIRoundButton shareButton = dialog.findViewById(R.id.shareButton);
+        QMUIRoundButton cancelButton = dialog.findViewById(R.id.cancelButton);
+
+        Bitmap createFromViewBitmap = QMUIDrawableHelper.createBitmapFromView(sharePicView);
+        displayImageView.setImageBitmap(createFromViewBitmap);
+
+        displayImageView.setOnClickListener(v -> dialog.dismiss());
+        cancelButton.setOnClickListener(v -> dialog.dismiss());
+
+        shareButton.setOnClickListener(v -> BitmapUtil.share(requireContext(), createFromViewBitmap));
+
+        dialog.show();
     }
 
 }

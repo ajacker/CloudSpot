@@ -13,6 +13,7 @@
         android:background="?attr/qmui_config_color_background">
 
         <ScrollView
+            android:id="@+id/sharePicView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/style_recyclerView">
@@ -34,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/qmui_config_color_gray_6"
+            android:background="@color/qmui_config_color_white"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="10"

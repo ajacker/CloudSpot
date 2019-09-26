@@ -54,8 +54,8 @@ public class HomeFragment extends BaseFragment {
 
 
     private void initTabs() {
-        int normalColor = QMUIResHelper.getAttrColor(getActivity(), R.attr.qmui_config_color_gray_6);
-        int selectColor = QMUIResHelper.getAttrColor(getActivity(), R.attr.qmui_config_color_blue);
+        int normalColor = QMUIResHelper.getAttrColor(requireActivity(), R.attr.qmui_config_color_gray_6);
+        int selectColor = QMUIResHelper.getAttrColor(requireActivity(), R.attr.qmui_config_color_blue);
         mTabSegment.setHasIndicator(false);
         mTabSegment.setDefaultNormalColor(normalColor);
         mTabSegment.setDefaultSelectedColor(selectColor);
@@ -64,16 +64,17 @@ public class HomeFragment extends BaseFragment {
         String titleHistory = getResources().getString(R.string.tab_history_title);
 
         QMUITabSegment.Tab findcloud = new QMUITabSegment.Tab(
-                ContextCompat.getDrawable(getContext(), R.mipmap.icon_tabbar_component),
+                ContextCompat.getDrawable(requireContext(), R.mipmap.tabbar_cloud),
                 null,
                 titleFindCloud, true
         );
 
         QMUITabSegment.Tab history = new QMUITabSegment.Tab(
-                ContextCompat.getDrawable(getContext(), R.mipmap.icon_tabbar_lab),
+                ContextCompat.getDrawable(requireContext(), R.mipmap.tabbar_history),
                 null,
                 titleHistory, true
         );
+
         mTabSegment.addTab(findcloud)
                 .addTab(history);
         mTabSegment.setMode(QMUITabSegment.MODE_FIXED);

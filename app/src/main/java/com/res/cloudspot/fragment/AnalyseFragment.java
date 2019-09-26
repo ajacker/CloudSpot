@@ -14,6 +14,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUIRadiusImageView;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.res.cloudspot.MainActivity;
 import com.res.cloudspot.R;
@@ -61,7 +62,7 @@ public class AnalyseFragment extends BaseFragment {
     }
 
     @OnClick(R.id.type_imageView)
-    void openImagerViewerFragment() {
+    void openImageViewerFragment() {
         Context context = requireContext();
         Bundle data = new Bundle();
         data.putString("type", cloudData.type);
@@ -108,6 +109,7 @@ public class AnalyseFragment extends BaseFragment {
 
         RequestOptions options = new RequestOptions()
                 .placeholder(R.drawable.loading)
+                .centerCrop()
                 .error(R.drawable.error);
         Glide.with(requireContext()).load(StringUtil.imgUrls.get(cloudData.type).get(0)).apply(options).into(typeImageView);
     }
@@ -119,6 +121,15 @@ public class AnalyseFragment extends BaseFragment {
         saveBtn.setTextColor(getResources().getColor(R.color.qmui_config_color_white));
         saveBtn.setOnClickListener(v -> {
             HistoryTabFragment.dataList.add(cloudData);
+            QMUITipDialog dialog = new QMUITipDialog.Builder(getContext())
+                    .setIconType(QMUITipDialog.Builder.ICON_TYPE_SUCCESS)
+                    .setTipWord("保存成功！")
+                    .create();
+            dialog.show();
+            requireView().postDelayed(() -> {
+                dialog.dismiss();
+                popBackStack();
+            }, 700);
         });
     }
 }

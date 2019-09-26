@@ -1,7 +1,6 @@
 package com.res.cloudspot.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +20,10 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdap
     private LayoutInflater mLayoutInflater;
     private Context mContext;
     private RecyclerView recyclerView;
-    private ArrayList<Bitmap> mData;
+    private ArrayList<Integer> mData;
     private ImageRecyclerAdapter.OnItemClickListener onItemClickListener = null;
 
-    public ImageRecyclerAdapter(Context mContext, ArrayList<Bitmap> mData) {
+    public ImageRecyclerAdapter(Context mContext, ArrayList<Integer> mData) {
         this.mContext = mContext;
         this.mLayoutInflater = LayoutInflater.from(mContext);
         this.mData = mData;
@@ -32,7 +31,7 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdap
 
     }
 
-    public void setmData(ArrayList<Bitmap> mData) {
+    public void setmData(ArrayList<Integer> mData) {
         this.mData = mData;
         notifyDataSetChanged();
     }

@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:gravity="end"
-            android:orientation="horizontal"></LinearLayout>
+            android:orientation="horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,15 +36,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:gravity="end|bottom"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_gravity="end|bottom"
                 android:adjustViewBounds="true"
-                android:scaleX="0.4"
-                android:scaleY="0.4"
                 android:src="@mipmap/icon">
 
             </ImageView>

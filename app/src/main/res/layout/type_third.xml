@@ -4,52 +4,44 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/pic_imageView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:adjustViewBounds="true"
-        android:src="@mipmap/ic_launcher" />
+        android:gravity="end"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <com.qmuiteam.qmui.widget.QMUIVerticalTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poem_font"
+                android:text="风云变幻"
+                android:textSize="40sp"></com.qmuiteam.qmui.widget.QMUIVerticalTextView>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/pic_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+            android:layout_weight="3"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="end"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/poem_layout"
-            android:layout_marginTop="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:gravity="end"
-            android:orientation="horizontal"></LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </TextView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:adjustViewBounds="true"
-                android:scaleX="0.4"
-                android:scaleY="0.4"
-                android:src="@mipmap/icon">
-
-            </ImageView>
-        </LinearLayout>
-
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/icon"></ImageView>
     </LinearLayout>
-
 </LinearLayout>

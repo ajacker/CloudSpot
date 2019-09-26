@@ -29,12 +29,14 @@ public class TypeViewPagerAdapter extends PagerAdapter {
     private final Context mContext;
     public static Typeface typeface;
     private final Bitmap data;
+    private String typeText;
 
 
-    public TypeViewPagerAdapter(Context context, Bitmap data) {
+    public TypeViewPagerAdapter(Context context, Bitmap data, String typeText) {
         mContext = context;
         this.data = data;
-        typeface = Typeface.createFromAsset(context.getAssets(), "fonts/poem_font2.ttf");
+        typeface = Typeface.createFromAsset(context.getAssets(), "fonts/poem_font.ttf");
+        this.typeText = typeText;
     }
 
 
@@ -44,9 +46,9 @@ public class TypeViewPagerAdapter extends PagerAdapter {
         View view = View.inflate(mContext, resources[position], null);
         //添加图片
         ImageView imageView = view.findViewById(R.id.pic_imageView);
-        WatermarkText watermarkText = new WatermarkText("卷云")
+        WatermarkText watermarkText = new WatermarkText(typeText)
                 .setPositionX(0.01)
-                .setPositionY(0.92)
+                .setPositionY(0.91)
                 .setTextAlpha(255)
                 .setTextFont(R.font.siyuan)
                 .setTextShadow(0.5f, 0.5f, 0.5f, Color.BLACK)
@@ -55,13 +57,13 @@ public class TypeViewPagerAdapter extends PagerAdapter {
 
         WatermarkImage watermarkImage = new WatermarkImage(mContext, R.mipmap.icon)
                 .setPositionX(0.84)
-                .setPositionY(0.84)
+                .setPositionY(0.83)
                 .setSize(0.2)
                 .setImageAlpha(255);
 
         Bitmap after = WatermarkBuilder.create(mContext, data)
                 .loadWatermarkText(watermarkText)
-                .loadWatermarkImage(watermarkImage)
+                //.loadWatermarkImage(watermarkImage)
                 .getWatermark().getOutputImage();
 
 
@@ -70,14 +72,18 @@ public class TypeViewPagerAdapter extends PagerAdapter {
 
         //添加诗词
         LinearLayout layout = view.findViewById(R.id.poem_layout);
-        String[] lines = StringUtil.poems.get(position).split("\n");
-        for (int i = lines.length - 1; i >= 0; i--) {
-            QMUIVerticalTextView textView = new QMUIVerticalTextView(mContext);
-            textView.setVerticalMode(true);
-            textView.setTypeface(typeface);
-            textView.setTextSize(16);
-            textView.setText(lines[i]);
-            layout.addView(textView);
+        if (layout != null) {
+            String[] lines = StringUtil.poems.get(position).split("\n");
+            for (int i = lines.length - 1; i >= 0; i--) {
+                QMUIVerticalTextView textView = new QMUIVerticalTextView(mContext);
+                textView.setVerticalMode(true);
+                textView.setTypeface(typeface);
+                textView.setTextSize(16);
+                System.out.println(StringUtil.addSpaceBetweenWords(lines[i]));
+                textView.setText(StringUtil.addSpaceBetweenWords(lines[i]));
+                textView.setPadding(8, 4, 8, 4);
+                layout.addView(textView);
+            }
         }
         container.addView(view);
         return view;

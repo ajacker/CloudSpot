@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back">
 
-    <com.qmuiteam.qmui.alpha.QMUIAlphaImageButton
-        android:id="@+id/search_button"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/btn_circle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="160dp"
+        android:fontFamily="@font/poem_font"
+        android:text="黄河远上白云间,\n一片孤城万仞山。"
+        android:textColor="@color/qmui_config_color_white"
+        android:textSize="36sp">
+
+    </TextView>
+
+    <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+        android:id="@+id/search_button"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="30dp"
         android:focusable="false"
-        android:src="@mipmap/search_image" />
+        android:scaleType="centerCrop"
+        android:src="@mipmap/icon"
+        app:qmui_border_color="#66ccff"
+        app:qmui_border_width="3dp"
+        app:qmui_is_circle="true" />
+
 
     <com.qmuiteam.qmui.widget.QMUITopBarLayout
         android:id="@+id/topbar"

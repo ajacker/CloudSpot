@@ -39,8 +39,8 @@ public class StringUtil {
     }
 
     static {
-        poems.add("—《关山月》\n明月出天山，\n苍茫云海间。");
-        poems.add("—《独坐敬亭山》\n众鸟高飞尽，\n孤云独去闲。");
+        poems.add("—《关山月》\n明月出天山，\n苍茫云海间");
+        poems.add("—《独坐敬亭山》\n众鸟高飞尽 ，\n孤云独去闲。");
         poems.add("—《寻隐者不遇》\n只在此山中，\n云深不知处。");
         poems.add("—《春夜喜雨》\n野径云俱黑，\n江船火独明。");
         poems.add("—《渡荆门送别》\n月下飞天镜，\n云生结海楼。");
@@ -71,7 +71,6 @@ public class StringUtil {
         )));
 
         imgUrls.put("卷云", new ArrayList<>(Arrays.asList(
-                "https://i.loli.net/2019/09/23/lkYwCZN3SfqzhrB.jpg",
                 "https://i.loli.net/2019/09/23/bYg8QqUndG9zw5D.jpg",
                 "https://i.loli.net/2019/09/23/PGsxCcrgF6tWdjY.jpg",
                 "https://i.loli.net/2019/09/23/DLpSGRrJ7Uogq5t.jpg",
@@ -111,5 +110,9 @@ public class StringUtil {
                 "http://m.qpic.cn/psb?/V11qpDYW2MBfNr/UdpCv2fOnhn.VWU1IRYmn2XcgiCLDh0DAbWTfEy9hMI!/b/dLgAAAAAAAAA&bo=AAXQAgAAAAARF*c!&rf=viewer_4.jpg"
         )));
 
+    }
+
+    public static String addSpaceBetweenWords(String str) {
+        return str.replace("", " ").trim();
     }
 }

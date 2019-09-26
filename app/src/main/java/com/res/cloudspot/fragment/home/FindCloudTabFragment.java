@@ -22,8 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
-import com.qmuiteam.qmui.alpha.QMUIAlphaImageButton;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
+import com.qmuiteam.qmui.widget.QMUIRadiusImageView;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
@@ -59,7 +59,7 @@ public class FindCloudTabFragment extends BaseTabFragment implements EasyPermiss
     @BindView(R.id.topbar)
     QMUITopBarLayout mTopBar;
     @BindView(R.id.search_button)
-    QMUIAlphaImageButton mImageButton;
+    QMUIRadiusImageView mImageButton;
     @BindView(R.id.imageView)
     ImageView mImageView;
 
@@ -219,13 +219,13 @@ public class FindCloudTabFragment extends BaseTabFragment implements EasyPermiss
         //设置要缩放的图片Uri和类型
         intent.setDataAndType(mImageUri, "image/*");
         //宽度比
-        intent.putExtra("aspectX", 512);
+        intent.putExtra("aspectX", 1);
         //高度比
-        intent.putExtra("aspectY", 512);
+        intent.putExtra("aspectY", 1);
         //输出图片的宽度
-        intent.putExtra("outputX", 512);
+        intent.putExtra("outputX", 600);
         //输出图片的高度
-        intent.putExtra("outputY", 512);
+        intent.putExtra("outputY", 600);
         //缩放
         intent.putExtra("scale", true);
         //前置摄像头
