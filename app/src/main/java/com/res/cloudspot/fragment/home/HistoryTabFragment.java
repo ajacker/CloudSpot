@@ -22,7 +22,7 @@ import com.res.cloudspot.util.CloudData;
 import com.res.cloudspot.util.ListDataSave;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -45,7 +45,7 @@ public class HistoryTabFragment extends BaseTabFragment {
     private ImageListAdapter adapter;
     private ListDataSave dataSave;
     private boolean deleteMode;
-    private List<CloudData> selectedList = new ArrayList<>();
+    private List<CloudData> selectedList = new LinkedList<>();
 
 
     @Override
