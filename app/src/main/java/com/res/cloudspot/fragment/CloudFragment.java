@@ -51,6 +51,6 @@ public class CloudFragment extends BaseFragment {
         cloudData = (CloudData) data.getSerializable("data");
         assert cloudData != null;
 
-        webView.loadUrl("http://183.191.120.7:5500");
+        webView.loadUrl("http://ajacker.tpddns.cn:5500/" + cloudData.type + ".html");
     }
 }
