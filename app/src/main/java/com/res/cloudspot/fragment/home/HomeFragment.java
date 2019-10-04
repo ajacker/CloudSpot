@@ -1,8 +1,11 @@
 package com.res.cloudspot.fragment.home;
 
+import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
@@ -125,5 +128,32 @@ public class HomeFragment extends BaseFragment {
                     return HISTORY;
             }
         }
+    }
+
+    private boolean isExit;
+
+    @Override
+    protected boolean canDragBack() {
+        return false;
+    }
+
+    @Override
+    public Object onLastFragmentFinish() {
+        return null;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (isExit) {
+                popBackStack();
+            } else {
+                Toast.makeText(requireActivity(), "再按一次退出", Toast.LENGTH_SHORT).show();
+                isExit = true;
+                new Handler().postDelayed(() -> isExit = false, 2000);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

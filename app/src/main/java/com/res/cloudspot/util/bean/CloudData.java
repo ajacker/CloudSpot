@@ -13,9 +13,8 @@ import java.util.Date;
 public class CloudData implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    public byte[] byteBitmap;
+    private byte[] byteBitmap;
     public String type;
-    public String comment;
     public Date date;
 
     public CloudData(Bitmap bitmap, String type) {

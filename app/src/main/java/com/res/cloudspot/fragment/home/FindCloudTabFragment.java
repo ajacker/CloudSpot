@@ -102,7 +102,6 @@ public class FindCloudTabFragment extends BaseTabFragment implements EasyPermiss
         CloudData cloudData = null;
         try {
             cloudData = new CloudData(BitmapFactory.decodeStream(new FileInputStream(savePath)), StringUtil.titles.get(type));
-            cloudData.comment = StringUtil.comments.get(type);
         } catch (FileNotFoundException ignored) {
         }
         Bundle data = new Bundle();
@@ -329,7 +328,7 @@ public class FindCloudTabFragment extends BaseTabFragment implements EasyPermiss
                         .setIconType(QMUITipDialog.Builder.ICON_TYPE_SUCCESS);
                 if (msg.what == UPLOAD_MESSAGE) {
                     if (msg.arg1 >= 1 && msg.arg1 <= 5) {
-                        builder.setTipWord(StringUtil.comments.get(msg.arg1));
+                        builder.setTipWord(StringUtil.titles.get(msg.arg1));
                     } else {
                         builder.setIconType(QMUITipDialog.Builder.ICON_TYPE_FAIL);
                         builder.setTipWord("失败！请检查网络或者重新上传图片！");

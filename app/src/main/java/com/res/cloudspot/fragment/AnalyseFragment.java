@@ -52,7 +52,10 @@ public class AnalyseFragment extends BaseFragment {
         View root = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_cloudanalyse, null);
         ButterKnife.bind(this, root);
 
-        initTopBar();
+        try {
+            initTopBar();
+        } catch (Exception ignored) {
+        }
         initContentView();
         initVars();
         return root;
