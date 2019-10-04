@@ -21,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeFragment extends BaseFragment {
+    private final static String TAG = HomeFragment.class.getSimpleName();
     @BindView(R.id.pager)
     ViewPager mViewPager;
     @BindView(R.id.tabs)
