@@ -20,8 +20,8 @@ import com.res.cloudspot.adapter.ImageRecyclerAdapter;
 import com.res.cloudspot.adapter.TypeViewPagerAdapter;
 import com.res.cloudspot.base.BaseFragment;
 import com.res.cloudspot.util.BitmapUtil;
-import com.res.cloudspot.util.CloudData;
 import com.res.cloudspot.util.ViewPagerForScrollView;
+import com.res.cloudspot.util.bean.CloudData;
 
 import java.util.ArrayList;
 

@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUIAnimationListView;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIFollowRefreshOffsetCalculator;
 import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
 import com.res.cloudspot.MainActivity;
@@ -18,8 +19,8 @@ import com.res.cloudspot.R;
 import com.res.cloudspot.adapter.ImageListAdapter;
 import com.res.cloudspot.base.BaseTabFragment;
 import com.res.cloudspot.fragment.AnalyseFragment;
-import com.res.cloudspot.util.CloudData;
 import com.res.cloudspot.util.ListDataSave;
+import com.res.cloudspot.util.bean.CloudData;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -149,7 +150,14 @@ public class HistoryTabFragment extends BaseTabFragment {
                 mPullToRefresh.postDelayed(() -> {
                     loadListView();
                     mPullToRefresh.finishRefresh();
-                }, 2000);
+                    //提示成功信息
+                    QMUITipDialog dialog = new QMUITipDialog.Builder(requireContext())
+                            .setIconType(QMUITipDialog.Builder.ICON_TYPE_SUCCESS)
+                            .setTipWord("刷新成功！")
+                            .create();
+                    dialog.show();
+                    requireView().postDelayed(dialog::dismiss, 1000);
+                }, 1500);
             }
         });
     }

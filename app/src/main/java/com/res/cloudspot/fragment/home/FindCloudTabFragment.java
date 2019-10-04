@@ -33,9 +33,9 @@ import com.res.cloudspot.R;
 import com.res.cloudspot.base.BaseTabFragment;
 import com.res.cloudspot.fragment.AnalyseFragment;
 import com.res.cloudspot.util.CameraUtil;
-import com.res.cloudspot.util.CloudData;
 import com.res.cloudspot.util.HttpUtil;
 import com.res.cloudspot.util.StringUtil;
+import com.res.cloudspot.util.bean.CloudData;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -92,6 +92,11 @@ public class FindCloudTabFragment extends BaseTabFragment implements EasyPermiss
         return root;
     }
 
+    /**
+     * 打开分析页面
+     *
+     * @param type 云朵类型
+     */
     private void openAnalyseFragment(int type) {
         Context context = requireContext();
         CloudData cloudData = null;
@@ -327,13 +332,15 @@ public class FindCloudTabFragment extends BaseTabFragment implements EasyPermiss
                         builder.setTipWord(StringUtil.comments.get(msg.arg1));
                     } else {
                         builder.setIconType(QMUITipDialog.Builder.ICON_TYPE_FAIL);
-                        builder.setTipWord("-1");
+                        builder.setTipWord("失败！请检查网络或者重新上传图片！");
                     }
                     Dialog dialog = builder.create();
                     dialog.show();
                     outer.requireView().postDelayed(dialog::dismiss, 1000);
-                    //跳转到分析页面
-                    outer.openAnalyseFragment(msg.arg1);
+                    //识别成功才跳转到分析页面
+                    if (msg.arg1 != -1) {
+                        outer.openAnalyseFragment(msg.arg1);
+                    }
 
                 }
             }

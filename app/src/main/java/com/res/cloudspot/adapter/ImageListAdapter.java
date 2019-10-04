@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.qmuiteam.qmui.widget.QMUIRadiusImageView;
 import com.res.cloudspot.R;
-import com.res.cloudspot.util.CloudData;
+import com.res.cloudspot.util.bean.CloudData;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -33,16 +33,6 @@ public class ImageListAdapter extends BaseAdapter {
 
     public void setDataList(List<CloudData> dataList) {
         this.dataList = dataList;
-        notifyDataSetChanged();
-    }
-
-    public void add(int pos, CloudData item) {
-        dataList.add(pos, item);
-        notifyDataSetChanged();
-    }
-
-    public void delete(int pos) {
-        dataList.remove(pos);
         notifyDataSetChanged();
     }
 

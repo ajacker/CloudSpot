@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.res.cloudspot.R;
 import com.res.cloudspot.base.BaseFragment;
-import com.res.cloudspot.util.CloudData;
+import com.res.cloudspot.util.bean.CloudData;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,7 +58,16 @@ public class CloudFragment extends BaseFragment {
         assert data != null;
         cloudData = (CloudData) data.getSerializable("data");
         assert cloudData != null;
+        //加载网页浏览器
+        initWebView();
+
+    }
+
+    private void initWebView() {
         webView.setWebChromeClient(new WebChromeClient() {
+            /**
+             * 设置网页加载进度条
+             */
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
@@ -73,7 +82,9 @@ public class CloudFragment extends BaseFragment {
 
         webView.setWebViewClient(new WebViewClient() {
 
-
+            /**
+             * 处理页面加载错误（低版本的处理机制）
+             */
             @TargetApi(21)
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
@@ -81,10 +92,12 @@ public class CloudFragment extends BaseFragment {
                 if (errorCode == ERROR_HOST_LOOKUP || errorCode == ERROR_CONNECT || errorCode == ERROR_TIMEOUT) {
                     view.loadUrl("about:blank");
                     view.loadDataWithBaseURL(null, "页面加载出错，请检查网络连接", "text/html", "utf-8", null);
-                    //view.loadUrl(mErrorUrl);
                 }
             }
 
+            /**
+             * 处理页面加载错误（高版本的处理机制）
+             */
             @TargetApi(23)
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
@@ -93,23 +106,23 @@ public class CloudFragment extends BaseFragment {
                 if (errorCode == ERROR_HOST_LOOKUP || errorCode == ERROR_CONNECT || errorCode == ERROR_TIMEOUT) {
                     view.loadUrl("about:blank");
                     view.loadDataWithBaseURL(null, "页面加载出错，请检查网络连接", "text/html", "utf-8", null);
-                    //view.loadUrl(mErrorUrl);
                 }
             }
 
+            /**
+             * 处理网络错误
+             */
             @Override
             public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
                 super.onReceivedHttpError(view, request, errorResponse);
                 int statusCode = errorResponse.getStatusCode();
                 if (404 == statusCode || 500 == statusCode) {
-                    view.loadUrl("about:blank");// 避免出现默认的错误界面
+                    view.loadUrl("about:blank");
                     view.loadDataWithBaseURL(null, "错误代码:" + statusCode, "text/html", "utf-8", null);
-                    //view.loadUrl(mErrorUrl);
                 }
             }
         });
 
         webView.loadUrl("http://ajacker.tpddns.cn:5500/" + cloudData.type + ".html");
-
     }
 }

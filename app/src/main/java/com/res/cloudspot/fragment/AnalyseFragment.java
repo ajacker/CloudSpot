@@ -21,8 +21,8 @@ import com.res.cloudspot.R;
 import com.res.cloudspot.adapter.ImageRecyclerAdapter;
 import com.res.cloudspot.base.BaseFragment;
 import com.res.cloudspot.fragment.home.HistoryTabFragment;
-import com.res.cloudspot.util.CloudData;
 import com.res.cloudspot.util.StringUtil;
+import com.res.cloudspot.util.bean.CloudData;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

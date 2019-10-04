@@ -1,4 +1,4 @@
-package com.res.cloudspot.util;
+package com.res.cloudspot.util.bean;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

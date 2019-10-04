@@ -3,4 +3,5 @@
     <string name="app_name">白云间</string>
     <string name="tab_findcloud_title">寻云</string>
     <string name="tab_history_title">过往</string>
+    <string name="tab_article">文章</string>
 </resources>
