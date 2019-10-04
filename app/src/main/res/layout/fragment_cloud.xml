@@ -46,12 +46,28 @@
     <!--                android:textSize="16sp" />-->
     <!--        </LinearLayout>-->
     <!--    </ScrollView>-->
-    <com.qmuiteam.qmui.widget.webview.QMUIWebView
-        android:id="@+id/webView"
-        android:layout_height="match_parent"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/top_bar_height">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/top_bar_height"
+        android:orientation="vertical">
 
-    </com.qmuiteam.qmui.widget.webview.QMUIWebView>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:progressDrawable="@drawable/pg"
+            android:visibility="visible">
+
+        </ProgressBar>
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </WebView>
+    </LinearLayout>
 
 </FrameLayout>
