@@ -85,6 +85,9 @@ public class HistoryTabFragment extends BaseTabFragment {
             cancelBtn.setTextColor(getResources().getColor(R.color.qmui_config_color_white));
             cancelBtn.setOnClickListener(v -> {
                 deleteMode = false;
+                for (int i = 0; i < mHistoryList.getChildCount(); i++) {
+                    mHistoryList.getChildAt(i).setBackground(null);
+                }
                 mTopBar.removeAllRightViews();
             });
         }
@@ -95,11 +98,9 @@ public class HistoryTabFragment extends BaseTabFragment {
     void onItemClick(int position) {
         if (deleteMode) {
             if (selectedList.contains(dataList.get(position))) {
-                System.out.println("取消选中");
                 selectedList.remove(dataList.get(position));
                 mHistoryList.getChildAt(position).setBackground(null);
             } else {
-                System.out.println("选中");
                 selectedList.add(dataList.get(position));
                 mHistoryList.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.app_color_blue));
             }

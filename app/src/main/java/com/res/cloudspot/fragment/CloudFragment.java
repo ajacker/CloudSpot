@@ -15,7 +15,6 @@ import android.widget.ProgressBar;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.res.cloudspot.R;
 import com.res.cloudspot.base.BaseFragment;
-import com.res.cloudspot.util.bean.CloudData;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +32,7 @@ public class CloudFragment extends BaseFragment {
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
-    private CloudData cloudData;
+    private String address;
 
     @Override
     protected View onCreateView() {
@@ -48,7 +47,7 @@ public class CloudFragment extends BaseFragment {
     private void initTopBar() {
         mTopBar.addLeftBackImageButton().setOnClickListener(v -> popBackStack());
 
-        mTopBar.setTitle("云朵介绍");
+        mTopBar.setTitle("云知");
 
     }
 
@@ -56,8 +55,7 @@ public class CloudFragment extends BaseFragment {
     private void initContentView() {
         Bundle data = getArguments();
         assert data != null;
-        cloudData = (CloudData) data.getSerializable("data");
-        assert cloudData != null;
+        address = data.getString("address");
         //加载网页浏览器
         initWebView();
 
@@ -123,6 +121,6 @@ public class CloudFragment extends BaseFragment {
             }
         });
 
-        webView.loadUrl("http://ajacker.tpddns.cn:5500/" + cloudData.type + ".html");
+        webView.loadUrl("http://39.106.202.5:8080/articles?address=" + address);
     }
 }

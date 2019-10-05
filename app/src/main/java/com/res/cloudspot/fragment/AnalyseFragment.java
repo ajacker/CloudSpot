@@ -94,7 +94,7 @@ public class AnalyseFragment extends BaseFragment {
     void openCloudFragment() {
         Context context = requireContext();
         Bundle data = new Bundle();
-        data.putSerializable("data", cloudData);
+        data.putString("address", cloudData.type + ".html");
         Intent intent = MainActivity.of(context, CloudFragment.class, data);
         context.startActivity(intent);
         if (context instanceof Activity) {

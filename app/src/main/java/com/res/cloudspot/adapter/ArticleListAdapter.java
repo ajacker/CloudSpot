@@ -60,8 +60,8 @@ public class ArticleListAdapter extends BaseAdapter {
             holder = (ArticleListAdapter.ViewHolder) convertView.getTag();
         }
         //装填数据
-        holder.titleText.setText(dataList.get(position).title);
-        Date date = dataList.get(position).date;
+        holder.titleText.setText(dataList.get(position).title.split("\\.")[0]);
+        Date date = dataList.get(position).createTime;
         holder.timeText.setText(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(date));
         return convertView;
     }
